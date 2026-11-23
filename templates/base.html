@@ -1,21 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mi Negocio{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: Arial, sans-serif; background: #f4f6f8; color: #333; }
-        header {
+        header.site-header {
             background: #1e293b; color: #fff; padding: 15px 30px;
             display: flex; justify-content: space-between; align-items: center;
         }
-        header h1 { font-size: 22px; }
-        header nav a {
+        header.site-header .logo { font-size: 22px; font-weight: bold; color: #fff; text-decoration: none; }
+        header.site-header nav a {
             color: #fff; text-decoration: none; margin-left: 20px; font-weight: bold;
         }
-        header nav a:hover { color: #38bdf8; }
+        header.site-header nav a:hover { color: #38bdf8; }
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         .card {
             background: #fff; border-radius: 8px; padding: 20px;
@@ -39,45 +41,44 @@
         .messages li { padding: 10px; border-radius: 6px; margin-bottom: 8px; }
         .messages .success { background: #dcfce7; color: #166534; }
         .messages .error { background: #fee2e2; color: #991b1b; }
-        footer { text-align: center; padding: 20px; color: #64748b; font-size: 13px; }
+        footer.site-footer { text-align: center; padding: 20px; color: #64748b; font-size: 13px; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🛒 Mi Negocio</h1>
+    <header class="site-header">
+        <a href="{% url 'inicio' %}" class="logo">🛒 Mi Negocio</a>
         <nav>
-       <nav> 
- <a href="{% url 'inicio' %}">Inicio</a> 
- <a href="{% url 'lista_productos' %}">Productos</a> 
- <a href="{% url 'lista_categorias' %}">Categorías</a>  <a href="{% url 'lista_clientes' %}">Clientes</a> 
- {% if user.is_authenticated %} 
- <a href="{% url 'dashboard' %}">Dashboard</a> 
- <span style="color:#38bdf8;">�� {{ user.username }}</span>  <form action="{% url 'logout' %}" method="post" style="display:inline ;"> 
- {% csrf_token %} 
- <button type="submit" class="btn btn-danger" style="margin-left:10p x;">Cerrar sesión</button> 
- </form> 
- {% else %} 
- <a href="{% url 'login' %}">Iniciar sesión</a> 
- {% endif %} 
-</nav> 
-
+            <a href="{% url 'inicio' %}">Inicio</a>
+            <a href="{% url 'lista_productos' %}">Productos</a>
+            <a href="{% url 'lista_categorias' %}">Categorías</a>
+            <a href="{% url 'lista_clientes' %}">Clientes</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+                <span style="color:#38bdf8; margin-left: 15px;">👤 Hola, {{ user.username }}</span>
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger" style="margin-left:10px;">Cerrar sesión</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+            {% endif %}
         </nav>
     </header>
 
-    <div class="container">
+    <main class="container">
         {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
-                    <li class="{{ message.tags }}">{{ message }}</li>
+                    <li class="message {{ message.tags }}">{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
 
         {% block content %}{% endblock %}
-    </div>
+    </main>
 
-    <footer>
-        Proyecto Integrador - Software que Crece con tu Negocio &copy; {% now "Y" %}
+    <footer class="site-footer">
+        <p>Proyecto Integrador - Software que Crece con tu Negocio &copy; {% now "Y" %}</p>
     </footer>
 </body>
 </html>
