@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -119,8 +120,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# 1. URL base para los archivos estáticos
+STATIC_URL = '/static/'
+
+# 2. Carpeta donde tú guardas tu CSS mientras programas
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+# 3. Carpeta donde Django y Render juntan los archivos para producción
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 
 # Email
