@@ -1,109 +1,295 @@
-/* Estilos generales y reseteo básico */
+/* =========================================================
+   HOJA DE ESTILOS EJECUTIVA - MI NEGOCIO
+   ========================================================= */
+
+/* Reseteo y tipografía formal */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f6f9; /* Fondo gris muy claro */
-    color: #333333;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8fafc; /* Gris perla limpio */
+    color: #1e293b; /* Gris carbón para lectura cómoda */
     line-height: 1.6;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Barra de navegación superior */
-header, nav {
-    background-color: #1e293b; /* Azul marino oscuro / pizarra */
+/* =========================================================
+   BARRA DE NAVEGACIÓN SUPERIOR
+   ========================================================= */
+header.site-header {
+    background-color: #0f172a; /* Azul medianoche corporativo */
     color: #ffffff;
-    padding: 1rem 2rem;
+    padding: 16px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #1d4ed8; /* Línea de acento institucional */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
-/* Logo o título principal en la barra */
-.navbar-brand, header h1, nav .logo {
-    font-size: 1.25rem;
+header.site-header .logo {
+    font-size: 20px;
     font-weight: 700;
     color: #ffffff;
     text-decoration: none;
+    letter-spacing: 0.3px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px;
 }
 
-/* Enlaces de navegación */
-.nav-links, nav ul {
-    list-style: none;
+header.site-header nav {
     display: flex;
-    gap: 1.5rem;
     align-items: center;
 }
 
-.nav-links a, nav ul li a {
-    color: #e2e8f0;
+header.site-header nav a {
+    color: #cbd5e1;
     text-decoration: none;
-    font-size: 0.95rem;
+    margin-left: 24px;
     font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.2px;
     transition: color 0.2s ease;
 }
 
-.nav-links a:hover, nav ul li a:hover {
+header.site-header nav a:hover {
     color: #ffffff;
 }
 
-/* Contenedor principal centrado */
-main, .container {
+.user-greeting {
+    color: #94a3b8;
+    margin-left: 28px;
+    padding-left: 20px;
+    border-left: 1px solid #334155; /* Separador vertical sutil */
+    font-size: 13.5px;
+    font-weight: 500;
+}
+
+.logout-form {
+    display: inline-block;
+    margin-left: 16px;
+}
+
+/* =========================================================
+   CONTENEDOR Y TARJETAS DE CONTENIDO
+   ========================================================= */
+.container {
     width: 100%;
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: 1140px;
+    margin: 36px auto;
+    padding: 0 24px;
     flex: 1;
 }
 
-/* Tarjetas de contenido (Bienvenido, Categorías, Productos) */
-.card, section {
+.card {
     background-color: #ffffff;
-    border-radius: 8px;
-    padding: 1.5rem 2rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    border-radius: 6px; /* Esquinas más sobrias */
+    padding: 28px 32px;
     border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    margin-bottom: 24px;
 }
 
-.card h1, .card h2, section h1, section h2 {
-    color: #1e293b;
-    font-size: 1.35rem;
-    margin-bottom: 0.5rem;
+.card h1, .card h2 {
+    color: #0f172a;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #f1f5f9; /* Línea divisoria formal */
 }
 
-.card p, section p {
-    color: #64748b;
-    font-size: 0.95rem;
+.card p {
+    color: #475569;
+    font-size: 14.5px;
 }
 
-/* Listas dentro de las tarjetas */
-.card ul, section ul {
-    margin-top: 0.75rem;
-    padding-left: 1.25rem;
+.card ul {
+    margin-top: 12px;
+    padding-left: 20px;
 }
 
-.card li, section li {
+.card li {
     color: #334155;
-    margin-bottom: 0.35rem;
-    font-size: 0.95rem;
+    margin-bottom: 8px;
+    font-size: 14.5px;
 }
 
-/* Pie de página */
-footer {
+/* =========================================================
+   BOTONES SOBRIOS Y PROFESIONALES
+   ========================================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 13.5px;
+    letter-spacing: 0.2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    margin: 2px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #1d4ed8;
+}
+.btn-primary:hover {
+    background-color: #1e40af;
+}
+
+.btn-success {
+    background-color: #15803d;
+}
+.btn-success:hover {
+    background-color: #166534;
+}
+
+.btn-danger {
+    background-color: #b91c1c;
+}
+.btn-danger:hover {
+    background-color: #991b1b;
+}
+
+.btn-warning {
+    background-color: #b45309;
+}
+.btn-warning:hover {
+    background-color: #92400e;
+}
+
+.btn-secondary {
+    background-color: #475569;
+}
+.btn-secondary:hover {
+    background-color: #334155;
+}
+
+/* =========================================================
+   TABLAS DE DATOS EMPRESARIALES
+   ========================================================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    text-align: left;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 2px solid #cbd5e1;
+}
+
+td {
+    padding: 14px 16px;
+    text-align: left;
+    color: #1e293b;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+tbody tr:hover {
+    background-color: #f8fafc; /* Resaltado sutil al pasar el mouse */
+}
+
+/* =========================================================
+   FORMULARIOS DE DJANGO
+   ========================================================= */
+form p {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 13.5px;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #0f172a;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #1d4ed8;
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+}
+
+/* =========================================================
+   ALERTAS Y MENSAJES DEL SISTEMA
+   ========================================================= */
+.messages {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.messages li {
+    padding: 12px 16px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border-left: 4px solid;
+}
+
+.messages .success {
+    background-color: #f0fdf4;
+    color: #166534;
+    border-color: #15803d;
+}
+
+.messages .error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border-color: #b91c1c;
+}
+
+/* =========================================================
+   PIE DE PÁGINA INSTITUCIONAL
+   ========================================================= */
+footer.site-footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0;
     text-align: center;
-    padding: 1.5rem;
+    padding: 20px;
     color: #64748b;
-    font-size: 0.85rem;
+    font-size: 13px;
     margin-top: auto;
 }
